@@ -22,3 +22,6 @@
 ###### 6. 减少read和write协程中select的chan数量 
 由于select操作每增加一个chan的查询，会带来一定得查询消耗，为了提高read和write效率，因此建议这俩协程select的chan数量严格控制（看到有些socket库在select加上quitChan，可以去除，提高性能）
 ###### 7. EncodeMessage时使用sync.Pool分配writeBuffer，减少GC压力
+
+TODO
+1. 配合消息处理业务，processMessage后统一flush，特别多个小消息，能一起发送，提高效率
